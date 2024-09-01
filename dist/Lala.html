@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <!-- Include React and ReactDOM from CDN -->
+    <script src="https://unpkg.com/react/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
+    <!-- Include Babel for JSX transpiling -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .App {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 320px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        button {
+            font-size: 1.5em;
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:active {
+            background-color: #003f8a;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        .reset {
+            background-color: #dc3545;
+        }
+
+        .reset:hover {
+            background-color: #c82333;
+        }
+
+        .reset:active {
+            background-color: #a71d2a;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function App() {
+            // State untuk menyimpan nilai
+            const [count, setCount] = React.useState(0);
+
+            // Fungsi untuk menambah nilai
+            const increase = () => {
+                setCount(count + 1);
+            };
+
+            // Fungsi untuk mengurangi nilai
+            const decrease = () => {
+                setCount(count - 1);
+            };
+
+            // Fungsi untuk mereset nilai
+            const reset = () => {
+                setCount(0);
+            };
+
+            return (
+                <div className="App">
+                    <h1>{count}</h1>
+                    <div>
+                        <button onClick={decrease}>-</button>
+                        <button onClick={increase}>+</button>
+                    </div>
+                    <button className="reset" onClick={reset}>Reset</button>
+                </div>
+            );
+        }
+
+        // Render komponen App ke dalam elemen dengan id "root"
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
